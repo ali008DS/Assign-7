@@ -1,0 +1,16 @@
+def permute_string(string, left, right):
+    if left == right:
+        print(''.join(string))
+    else:
+        for i in range(left, right + 1):
+            string[left], string[i] = string[i], string[left]
+            permute_string(string, left + 1, right)
+            string[left], string[i] = string[i], string[left]  # Backtrack
+
+# Test cases
+string1 = "ABC"
+string2 = "XY"
+print("Permutations of ABC:")
+permute_string(list(string1), 0, len(string1) - 1)
+print("Permutations of XY:")
+permute_string(list(string2), 0, len(string2) - 1)
